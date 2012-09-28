@@ -2,6 +2,8 @@ package be.technobel.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,8 +26,9 @@ public class Character {
 	private Integer id;
 	@Column(name ="CHARACTER_IMAGE")
 	private String image;
-	@Column(name ="CHARACTER_NUMBER")
-	private Integer number;	
+	@Column(name ="CHARACTER_NUMBER", nullable =true)
+	private Integer number;
+	@Enumerated(value = EnumType.STRING) 
 	@Column(name ="CHARACTER_TYPE")
 	private CharacterType Type;
 	

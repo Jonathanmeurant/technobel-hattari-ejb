@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import be.technobel.domain.exceptions.RepositoryException;
 import be.technobel.domain.repository.interfaces.GenericRepository;
 
 
