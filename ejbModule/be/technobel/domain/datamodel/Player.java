@@ -1,6 +1,11 @@
-package domain.game;
+package be.technobel.domain.datamodel;
+
+
 
 import java.util.List;
+
+import be.technobel.domain.entity.Chips;
+import be.technobel.domain.entity.User;
 
 public class Player {
 	
@@ -9,12 +14,12 @@ public class Player {
 	List<PlayerChips> unusableTokens;
 	Character clue;
 	
-	public Player(User user, Token token)
+	public Player(User user, Chips chips)
 	{
 		this.user=user;
 		for(int i=0;i<5;i++)
 		{
-			usableTokens.add(new PlayerChips(token, user));
+			usableTokens.add(new PlayerChips(chips, user));
 		}
 		
 	}
@@ -27,19 +32,19 @@ public class Player {
 		this.user = user;
 	}
 
-	public List<PlayerChips> getUsableTokens() {
+	public List<PlayerChips> getUsablechips() {
 		return usableTokens;
 	}
 
-	public void setUsableTokens(List<PlayerChips> usableTokens) {
+	public void setUsableTokens(List<PlayerChips> usablechips) {
 		this.usableTokens = usableTokens;
 	}
 
-	public List<PlayerChips> getUnusableTokens() {
+	public List<PlayerChips> getUnusablechips() {
 		return unusableTokens;
 	}
 
-	public void setUnusableTokens(List<PlayerChips> unusableTokens) {
+	public void setUnusablechips(List<PlayerChips> unusablechips) {
 		this.unusableTokens = unusableTokens;
 	}
 

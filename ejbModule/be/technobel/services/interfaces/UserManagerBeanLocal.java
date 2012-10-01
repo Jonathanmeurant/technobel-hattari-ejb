@@ -2,7 +2,9 @@ package be.technobel.services.interfaces;
 
 import javax.ejb.Local;
 
+import be.technobel.services.UserManager;
+
 @Local
-public interface UserManagerBeanLocal {
+public interface UserManagerBeanLocal extends UserManager{
 
 }
