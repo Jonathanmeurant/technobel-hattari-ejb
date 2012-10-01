@@ -14,12 +14,12 @@ import javax.ejb.Stateless;
  * Session Bean implementation class CharacterRepository
  */
 @Stateless(name = "CharacterRepositoryBean")
-public class CharacterRepository extends GenericRepositoryJpa<Character> implements CharacterRepositoryLocal {
+public class CharacterRepositoryJpa extends GenericRepositoryJpa<Character> implements CharacterRepositoryLocal {
 
     /**
      * Default constructor. 
      */
-    public CharacterRepository() {
+    public CharacterRepositoryJpa() {
         // TODO Auto-generated constructor stub
     }
 

@@ -11,12 +11,12 @@ import javax.ejb.Stateless;
  * Session Bean implementation class ChipsRepository
  */
 @Stateless(name = "ChipsRepositoryBean")
-public class ChipsRepository extends GenericRepositoryJpa<Chips> implements ChipsRepositoryLocal {
+public class ChipsRepositoryJpa extends GenericRepositoryJpa<Chips> implements ChipsRepositoryLocal {
 
     /**
      * Default constructor. 
      */
-    public ChipsRepository() {
+    public ChipsRepositoryJpa() {
         // TODO Auto-generated constructor stub
     }
 

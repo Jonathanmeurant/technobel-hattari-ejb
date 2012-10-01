@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
-
 import be.technobel.domain.datamodel.CharacterType;
 
 /**
@@ -22,19 +20,19 @@ import be.technobel.domain.datamodel.CharacterType;
  */
 
 @Entity
-@Table(name="CHARACTER")
+@Table(name="CHARACTER_HT")
 public class Character {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name ="CHARACTER_ID")
+	@Column(name ="CHARACTER_HT_ID")
 	private Integer id;
-	@Column(name ="CHARACTER_IMAGE")
+	@Column(name ="CHARACTER_HT_IMAGE")
 	private String image;
-	@Column(name ="CHARACTER_NUMBER", nullable =true)
+	@Column(name ="CHARACTER_HT_NUMBER", nullable =true)
 	private Integer number;
 	@Enumerated(value = EnumType.STRING) 
-	@Column(name ="CHARACTER_TYPE")
+	@Column(name ="CHARACTER_HT_TYPE")
 	private CharacterType Type;
 	@Transient
 	private  Boolean visible;

@@ -1,24 +1,20 @@
 package be.technobel.domain.repository.jpa;
 
-import java.util.List;
-
+import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 import be.technobel.domain.entity.User;
-import be.technobel.domain.exceptions.RepositoryException;
 import be.technobel.domain.exceptions.ValidationException;
 import be.technobel.domain.repository.interfaces.user.UserRepositoryLocal;
 import be.technobel.domain.repository.jpa.generic.GenericRepositoryJpa;
 
-import javax.ejb.Stateless;
-import javax.persistence.TypedQuery;
-
 /**
  * Session Bean implementation class UserRepository
  */
-@Stateless
-public class UserRepository extends GenericRepositoryJpa<User>  implements UserRepositoryLocal {
+@Stateless(name="UserRepositoryBean")
+public class UserRepositoryJpa extends GenericRepositoryJpa<User>  implements UserRepositoryLocal {
 
- UserRepository() {
+	public UserRepositoryJpa() {
         // TODO Auto-generated constructor stub
     }
 

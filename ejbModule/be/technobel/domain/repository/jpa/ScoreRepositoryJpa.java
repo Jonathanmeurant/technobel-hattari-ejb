@@ -19,12 +19,12 @@ import be.technobel.domain.repository.jpa.generic.GenericRepositoryJpa;
  * Session Bean implementation class ScoreRepository
  */
 @Stateless(name = "ScoreRepositoryBean")
-public class ScoreRepository extends GenericRepositoryJpa<Score>  implements ScoreRepositoryLocal {
+public class ScoreRepositoryJpa extends GenericRepositoryJpa<Score>  implements ScoreRepositoryLocal {
 
     /**
      * Default constructor. 
      */
-    public ScoreRepository() {
+    public ScoreRepositoryJpa() {
         // TODO Auto-generated constructor stub
     }
 
