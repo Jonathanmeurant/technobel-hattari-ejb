@@ -10,6 +10,7 @@ public class GameLoop {
 	private int loopCounter;
 	private int roundCounter;
 	private boolean isPoolPlayerFull;
+	private boolean isInitialized;
 	
 
 	public GameLoop() {
@@ -18,6 +19,7 @@ public class GameLoop {
 		this.setLoopCounter(0);
 		this.setPoolPlayerFull(false);
 		this.setRoundCounter(0);
+		this.setInitialized(false);
 	}
 
 	public int getLoopCounter() {
@@ -69,6 +71,14 @@ public class GameLoop {
 
 	public int getNbrMaxPlayer() {
 		return nbrMaxPlayer;
+	}
+
+	public boolean isInitialized() {
+		return isInitialized;
+	}
+
+	public void setInitialized(boolean isInitialized) {
+		this.isInitialized = isInitialized;
 	}
 
 
