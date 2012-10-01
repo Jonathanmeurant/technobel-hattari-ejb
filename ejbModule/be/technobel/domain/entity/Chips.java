@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /**
- * @author student
+ * @author jonmeu
  *
  */
 
@@ -22,7 +22,7 @@ public class Chips {
 	@Column(name ="CHIPS_ID")
 	private Integer id;
 	@Column(name ="CHIPS_NAME")
-	private String Name;
+	private String Name; // les noms des jetons = yellow, blue, red, green and firstplayer.
 	@Column(name ="CHIPS_IMAGE_RECTO")
 	private String imageRecto;
 	@Column(name ="CHIPS_IMAGE_BACK")
