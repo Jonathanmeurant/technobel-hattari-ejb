@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author student
@@ -26,7 +27,9 @@ public class Chips {
 	private String imageRecto;
 	@Column(name ="CHIPS_IMAGE_BACK")
 	private String imageBack;
-	
+	@Transient
+	private Boolean reversed;
+
 	public Chips() { }
 
 	public Chips(String name, String imageRecto, String imageBack) {

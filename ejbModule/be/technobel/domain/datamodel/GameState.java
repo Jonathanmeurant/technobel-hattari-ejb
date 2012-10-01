@@ -2,7 +2,9 @@ package be.technobel.domain.datamodel;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import be.technobel.domain.entity.Character;
+import be.technobel.domain.entity.User;
 
 
 
@@ -15,24 +17,16 @@ public class GameState {
 	
 	
 
-	private List<Player> players;
+	private List<User> user;
 		
 	private Character victim;
 	private List<Character> suspects = new LinkedList<Character>();
-	private LinkedList<LinkedList<PlayerChips>> suspectTokens = new LinkedList<LinkedList<PlayerChips>>();
+	//private LinkedList<LinkedList<PlayerChips>> suspectTokens = new LinkedList<LinkedList<PlayerChips>>();
 	
 	//private int firstTokenSuspect;
 	private Character lastSelectedCharacter;
 
 	public GameState() {}
-	
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
 
 	public int getCurrentPlayer() {
 		return currentPlayer;
@@ -40,6 +34,14 @@ public class GameState {
 
 	public void setCurrentPlayer(int currentPlayer) {
 		this.currentPlayer = currentPlayer;
+	}
+
+	public List<User> getUser() {
+		return user;
+	}
+
+	public void setUser(List<User> user) {
+		this.user = user;
 	}
 
 	public Character getVictim() {
@@ -58,14 +60,6 @@ public class GameState {
 		this.suspects = suspects;
 	}
 
-	public LinkedList<LinkedList<PlayerChips>> getSuspectTokens() {
-		return suspectTokens;
-	}
-
-	public void setSuspectTokens(LinkedList<LinkedList<PlayerChips>> suspectTokens) {
-		this.suspectTokens = suspectTokens;
-	}
-
 	public Character getLastSelectedCharacter() {
 		return lastSelectedCharacter;
 	}
@@ -73,5 +67,6 @@ public class GameState {
 	public void setLastSelectedCharacter(Character lastSelectedCharacter) {
 		this.lastSelectedCharacter = lastSelectedCharacter;
 	}
-
+	
+	
 }

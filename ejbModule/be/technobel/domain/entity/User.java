@@ -1,6 +1,8 @@
 package be.technobel.domain.entity;
 
+
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author jonmeu
@@ -38,6 +41,11 @@ public class User {
 	
 	@OneToOne(mappedBy="user")
 	private Score score;
+	
+	@Transient
+	private List<Chips> chips;
+	@Transient
+	private Character clue; 
 	
 	public User() { }
 
@@ -115,5 +123,27 @@ public class User {
 	public void setScore(Score score) {
 		this.score = score;
 	}
+
+
+	public List<Chips> getChips() {
+		return chips;
+	}
+
+
+	public void setChips(List<Chips> chips) {
+		this.chips = chips;
+	}
+
+
+	public Character getClue() {
+		return clue;
+	}
+
+
+	public void setClue(Character clue) {
+		this.clue = clue;
+	}
+	
+	
 	
 }
