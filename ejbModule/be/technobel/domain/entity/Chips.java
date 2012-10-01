@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -15,6 +17,10 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="CHIPS")
+@NamedQueries( {
+	@NamedQuery(name = "Chips.findByName",
+				query = "SELECT c FROM Chips AS c where c.name  like :name")
+	} )
 public class Chips {
 
 	@Id
@@ -22,7 +28,7 @@ public class Chips {
 	@Column(name ="CHIPS_ID")
 	private Integer id;
 	@Column(name ="CHIPS_NAME")
-	private String Name; // les noms des jetons = yellow, blue, red, green and firstplayer.
+	private String name; // les noms des jetons = yellow, blue, red, green and firstplayer.
 	@Column(name ="CHIPS_IMAGE_RECTO")
 	private String imageRecto;
 	@Column(name ="CHIPS_IMAGE_BACK")
@@ -34,7 +40,7 @@ public class Chips {
 
 	public Chips(String name, String imageRecto, String imageBack) {
 		super();
-		Name = name;
+		this.name = name;
 		this.imageRecto = imageRecto;
 		this.imageBack = imageBack;
 	}
@@ -48,11 +54,11 @@ public class Chips {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getImageRecto() {

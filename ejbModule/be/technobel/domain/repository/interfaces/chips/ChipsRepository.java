@@ -13,4 +13,5 @@ import be.technobel.domain.repository.interfaces.GenericRepository;
 
 public interface ChipsRepository extends GenericRepository<Chips> {
 
+	public Chips findByName(String name);
 }

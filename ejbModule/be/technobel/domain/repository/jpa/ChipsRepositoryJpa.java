@@ -1,11 +1,13 @@
 package be.technobel.domain.repository.jpa;
 
 
+import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
+
 import be.technobel.domain.entity.Chips;
+import be.technobel.domain.exceptions.ValidationException;
 import be.technobel.domain.repository.interfaces.chips.ChipsRepositoryLocal;
 import be.technobel.domain.repository.jpa.generic.GenericRepositoryJpa;
-
-import javax.ejb.Stateless;
 
 /**
  * Session Bean implementation class ChipsRepository
@@ -17,7 +19,17 @@ public class ChipsRepositoryJpa extends GenericRepositoryJpa<Chips> implements C
      * Default constructor. 
      */
     public ChipsRepositoryJpa() {
-        // TODO Auto-generated constructor stub
+        
     }
+
+	@Override
+	public Chips findByName(String name) {
+		if(name ==null || name.trim().length() ==0){
+			throw new ValidationException("Invalid name");
+		}
+		TypedQuery<Chips> query = em.createNamedQuery("Chips.findByName", Chips.class);
+		query.setParameter("name", name);		
+		return query.getSingleResult();
+	}
 
 }
