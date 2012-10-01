@@ -70,5 +70,13 @@ public class Chips {
 	public void setImageBack(String imageBack) {
 		this.imageBack = imageBack;
 	}
+
+	public Boolean getReversed() {
+		return reversed;
+	}
+
+	public void setReversed(Boolean reversed) {
+		this.reversed = reversed;
+	}
 	
 }
