@@ -3,7 +3,7 @@ package be.technobel.domain.datamodel;
 import java.util.List;
 
 public class GameLoop {
-	int nbrMaxPlayer = 4;
+	private int nbrMaxPlayer;
 	
 	private List<ConnectedUser> connectedUsers;
 	private int nbrPlayer;
@@ -13,6 +13,7 @@ public class GameLoop {
 	
 
 	public GameLoop() {
+		this.nbrMaxPlayer = 4;
 		this.setNbrPlayer(0);
 		this.setLoopCounter(0);
 		this.setPoolPlayerFull(false);
@@ -45,6 +46,10 @@ public class GameLoop {
 	public void setConnectedUsers(List<ConnectedUser> connectedUsers) {
 		this.connectedUsers = connectedUsers;
 	}
+	
+	public void addConnectedUser(ConnectedUser connectedUser) {
+		this.connectedUsers.add(connectedUser);
+	}
 
 	public boolean isPoolPlayerFull() {
 		return isPoolPlayerFull;
@@ -61,5 +66,10 @@ public class GameLoop {
 	public void setNbrPlayer(int nbrPlayer) {
 		this.nbrPlayer = nbrPlayer;
 	}
+
+	public int getNbrMaxPlayer() {
+		return nbrMaxPlayer;
+	}
+
 
 }
