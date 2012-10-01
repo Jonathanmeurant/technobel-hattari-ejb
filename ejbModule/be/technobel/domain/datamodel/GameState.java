@@ -13,7 +13,7 @@ public class GameState {
 		
 	private Character victim;
 	private List<Character> suspects = new LinkedList<Character>();
-	private LinkedList<LinkedList<PlayerToken>> suspectTokens = new LinkedList<LinkedList<PlayerToken>>();
+	private LinkedList<LinkedList<PlayerChips>> suspectTokens = new LinkedList<LinkedList<PlayerChips>>();
 	
 	private int firstTokenSuspect;
 
@@ -51,11 +51,11 @@ public class GameState {
 		this.suspects = suspects;
 	}
 
-	public LinkedList<LinkedList<PlayerToken>> getSuspectTokens() {
+	public LinkedList<LinkedList<PlayerChips>> getSuspectTokens() {
 		return suspectTokens;
 	}
 
-	public void setSuspectTokens(LinkedList<LinkedList<PlayerToken>> suspectTokens) {
+	public void setSuspectTokens(LinkedList<LinkedList<PlayerChips>> suspectTokens) {
 		this.suspectTokens = suspectTokens;
 	}
 

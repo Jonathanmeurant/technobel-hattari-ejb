@@ -5,8 +5,8 @@ import java.util.List;
 public class Player {
 	
 	User user;
-	List<PlayerToken> usableTokens;
-	List<PlayerToken> unusableTokens;
+	List<PlayerChips> usableTokens;
+	List<PlayerChips> unusableTokens;
 	Character clue;
 	
 	public Player(User user, Token token)
@@ -14,7 +14,7 @@ public class Player {
 		this.user=user;
 		for(int i=0;i<5;i++)
 		{
-			usableTokens.add(new PlayerToken(token, user));
+			usableTokens.add(new PlayerChips(token, user));
 		}
 		
 	}
@@ -27,19 +27,19 @@ public class Player {
 		this.user = user;
 	}
 
-	public List<PlayerToken> getUsableTokens() {
+	public List<PlayerChips> getUsableTokens() {
 		return usableTokens;
 	}
 
-	public void setUsableTokens(List<PlayerToken> usableTokens) {
+	public void setUsableTokens(List<PlayerChips> usableTokens) {
 		this.usableTokens = usableTokens;
 	}
 
-	public List<PlayerToken> getUnusableTokens() {
+	public List<PlayerChips> getUnusableTokens() {
 		return unusableTokens;
 	}
 
-	public void setUnusableTokens(List<PlayerToken> unusableTokens) {
+	public void setUnusableTokens(List<PlayerChips> unusableTokens) {
 		this.unusableTokens = unusableTokens;
 	}
 

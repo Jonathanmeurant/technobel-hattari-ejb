@@ -2,14 +2,14 @@ package be.technobel.domain.datamodel;
 
 
 
-public class PlayerToken {
+public class PlayerChips {
 
 		Token token;
 		boolean reversed=false;
 		String imageUrl;
 		Player owner;
 		
-		public PlayerToken(Token token,Player owner)
+		public PlayerChips(Token token,Player owner)
 		{
 			this.token=token;
 			this.owner=owner;
