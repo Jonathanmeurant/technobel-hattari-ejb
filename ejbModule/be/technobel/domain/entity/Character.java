@@ -35,10 +35,9 @@ public class Character {
 	
 	public Character() { }
 
-	public Character(Integer id, String image, Integer number,
+	public Character(String image, Integer number,
 			CharacterType type) {
 		super();
-		this.id = id;
 		this.image = image;
 		this.number = number;
 		Type = type;

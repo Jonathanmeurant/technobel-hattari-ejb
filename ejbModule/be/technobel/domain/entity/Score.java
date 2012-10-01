@@ -37,7 +37,6 @@ public class Score {
 
 	public Score(Integer id, int nbrPlay, int nbrWin, float ratio) {
 		super();
-		this.id = id;
 		this.nbrPlay = nbrPlay;
 		this.nbrWin = nbrWin;
 		this.ratio = ratio;

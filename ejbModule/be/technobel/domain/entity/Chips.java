@@ -29,9 +29,8 @@ public class Chips {
 	
 	public Chips() { }
 
-	public Chips(Integer id, String name, String imageRecto, String imageBack) {
+	public Chips(String name, String imageRecto, String imageBack) {
 		super();
-		this.id = id;
 		Name = name;
 		this.imageRecto = imageRecto;
 		this.imageBack = imageBack;
