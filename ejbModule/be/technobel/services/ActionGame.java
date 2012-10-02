@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 
 import be.technobel.domain.datamodel.GameState;
 import be.technobel.domain.entity.Character;
@@ -12,19 +13,22 @@ import be.technobel.domain.entity.Chips;
 import be.technobel.domain.entity.User;
 import be.technobel.domain.repository.interfaces.character.CharacterRepository;
 import be.technobel.domain.repository.interfaces.chips.ChipsRepository;
+import be.technobel.domain.repository.interfaces.user.UserRepository;
 import be.technobel.services.interfaces.ActionGameInterface;
-@EJB(name="actionGame")
+@Stateless(name="actionGame")
 public class ActionGame implements ActionGameInterface{
 	@EJB
 	private CharacterRepository charRepository;
 	@EJB
 	private ChipsRepository chipsRepository;
+	@EJB
+	private UserRepository userRepository;
 	private GameState gamestate = new GameState();
 	
 	public GameState getGamestate() {
 		return gamestate;
 	}
-
+//--------------------------------------BEGIN GAME----------------------------------------//
 	public void intializeGame(List<User> users) {
 		
 		gamestate.setUser(users);
@@ -143,6 +147,80 @@ public class ActionGame implements ActionGameInterface{
 		}
 		return null;
 	}
-
-
+//--------------------------------------END GAME----------------------------------------//
+	public User userWin()
+	{
+		User winner=null;
+		List<User> winUsers= new ArrayList<User>();
+		int minimum=Integer.MAX_VALUE;
+		for(User user :gamestate.getUser())
+		{
+			List<Chips> chipsUsers= user.getChips();
+			int size = chipsUsers.size();
+			
+			if(size<minimum)
+			{
+				minimum=size;
+				winUsers.clear();
+				winUsers.add(user);
+				
+			}
+			else if(size==minimum)
+			{
+				winUsers.add(user);
+			}
+		}
+		
+		if(winUsers.size()==1)
+		{
+			winner= winUsers.get(0);
+			return winner;
+		}
+		
+		minimum=Integer.MAX_VALUE;
+		for(User user : winUsers)
+		{
+			int blackChips=0;
+			for(Chips chips : user.getChips())
+			{
+				if(chips.getReversed())
+				{
+					blackChips++;
+				}
+			}
+			if(blackChips<minimum)
+			{
+				minimum=blackChips;
+				winner= user;
+			}
+		}
+		
+		return winner;
+	}
+	public boolean endGame()
+	{
+			boolean endGame = true;
+			for(User user : gamestate.getUser())
+			{
+				endGame = true;
+				List<Chips> chipsUser = user.getChips();
+				if(chipsUser.size() >= 8 || chipsUser.size()<=0){
+					break;
+				}
+				for(Chips chips : chipsUser)
+				{
+					if(!chips.getReversed())
+					{
+						endGame = false;
+						break;
+					}
+				}
+				
+				if(endGame){
+					break;
+				}
+			}
+		return endGame;
+		
+	}
 }
