@@ -33,6 +33,10 @@ public class GameLoop {
 	public void setUserListIpWaitTurn(List<String> userListIpWaitTurn) {
 		this.userListIpWaitTurn = userListIpWaitTurn;
 	}
+	
+	public void addUserListIpWaitTurn(String userIp) {
+		this.userListIpWaitTurn.add(userIp);
+	}
 
 	public int getNbrWaitToTurnClue() {
 		return nbrWaitToTurnClue;
