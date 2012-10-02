@@ -19,7 +19,12 @@ public class ActionGame implements ActionGameInterface{
 	private CharacterRepository charRepository;
 	@EJB
 	private ChipsRepository chipsRepository;
-	GameState gamestate = new GameState();
+	private GameState gamestate = new GameState();
+	
+	public GameState getGamestate() {
+		return gamestate;
+	}
+
 	public void intializeGame(List<User> users) {
 		
 		gamestate.setUser(users);

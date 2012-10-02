@@ -3,6 +3,8 @@ package be.technobel.services.interfaces;
 import java.util.List;
 
 import javax.ejb.Local;
+
+import be.technobel.domain.datamodel.GameState;
 import be.technobel.domain.entity.Character;
 
 import be.technobel.domain.entity.Chips;
@@ -17,5 +19,5 @@ public interface ActionGameInterface {
 	public void firstPlayer(Character character);
 	public void accusation(Character suspect);
 	public Chips searchChipsUser(User user);
-
+	public GameState getGamestate();
 }
