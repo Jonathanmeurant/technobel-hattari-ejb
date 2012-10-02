@@ -1,5 +1,6 @@
 package be.technobel.domain.datamodel;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class GameState {
 	private List<User> user;
 		
 	private Character victim;
-	private List<Character> suspects = new LinkedList<Character>();
+	private Character suspect;
+	private List<Character> suspects = new ArrayList<Character>();
 	//private LinkedList<LinkedList<PlayerChips>> suspectTokens = new LinkedList<LinkedList<PlayerChips>>();
 	
 	//private int firstTokenSuspect;
@@ -58,6 +60,11 @@ public class GameState {
 
 	public void setSuspects(List<Character> suspects) {
 		this.suspects = suspects;
+	}
+	
+	public void addSuspect(Character suspect)
+	{
+		this.suspect= suspect;
 	}
 
 	public Character getLastSelectedCharacter() {
