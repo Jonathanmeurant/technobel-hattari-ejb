@@ -1,6 +1,7 @@
 package be.technobel.domain.repository.jpa;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import be.technobel.domain.entity.User;
@@ -20,12 +21,19 @@ public class UserRepositoryJpa extends GenericRepositoryJpa<User>  implements Us
 
     @Override
 	public User findByUsername(String username) {
-		if(username == null || username.trim().length() ==0){
+		
+		if(username==null || username.trim().length()==0)
 			throw new ValidationException("Invalid username");
+			TypedQuery<User> query = em.createNamedQuery("User.findByUsername",User.class);
+			query.setParameter("username", username);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			return null;
 		}
-		TypedQuery<User> query = em.createNamedQuery("User.findByUsername", User.class);
-		query.setParameter("username", username);		
-		return query.getSingleResult();		
+		
+		
 	}
 
 }

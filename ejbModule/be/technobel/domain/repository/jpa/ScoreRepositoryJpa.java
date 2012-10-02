@@ -34,7 +34,13 @@ public class ScoreRepositoryJpa extends GenericRepositoryJpa<Score>  implements 
 			throw new RepositoryException("REPOSITORY findRange("+pcName+" obj) - Invalid parameter");
 		}
 		TypedQuery<Score> tq = em.createQuery("SELECT T FROM "+pcName+" AS T Limit"+ start+","+ length , persistenceClass);
-		return tq.getResultList();
+		
+		try{
+			return tq.getResultList();
+		} catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -43,6 +49,11 @@ public class ScoreRepositoryJpa extends GenericRepositoryJpa<Score>  implements 
 			throw new RepositoryException("REPOSITORY findRange("+pcName+" obj) - Invalid parameter");
 		}
 		TypedQuery<Score> tq = em.createQuery("SELECT T FROM "+pcName+" AS T where T.nbrPlay="+minGames+" Limit"+ start+","+ length, persistenceClass);
-		return tq.getResultList();
+		try {
+			return tq.getResultList();
+		} catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

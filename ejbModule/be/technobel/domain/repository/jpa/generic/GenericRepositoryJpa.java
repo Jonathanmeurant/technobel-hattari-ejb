@@ -41,7 +41,12 @@ public abstract class GenericRepositoryJpa<T> implements GenericRepository<T> {
 	public List<T> findAll() {
 		
 		TypedQuery<T> tq = em.createQuery("SELECT T FROM "+pcName+" AS T", persistenceClass);
-		return tq.getResultList();
+		try {
+			return tq.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		
 	}
 	

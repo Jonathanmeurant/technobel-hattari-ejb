@@ -28,8 +28,13 @@ public class ChipsRepositoryJpa extends GenericRepositoryJpa<Chips> implements C
 			throw new ValidationException("Invalid name");
 		}
 		TypedQuery<Chips> query = em.createNamedQuery("Chips.findByName", Chips.class);
-		query.setParameter("name", name);		
-		return query.getSingleResult();
+		query.setParameter("name", name);
+		try {
+			return query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}		
 	}
 
 }
