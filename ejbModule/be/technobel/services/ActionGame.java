@@ -12,7 +12,7 @@ import be.technobel.domain.entity.Chips;
 import be.technobel.domain.entity.User;
 import be.technobel.domain.repository.interfaces.character.CharacterRepository;
 import be.technobel.domain.repository.interfaces.chips.ChipsRepository;
-
+@EJB(name="actionGame")
 public class ActionGame {
 	@EJB
 	private CharacterRepository charRepository;
