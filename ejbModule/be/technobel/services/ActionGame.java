@@ -12,8 +12,9 @@ import be.technobel.domain.entity.Chips;
 import be.technobel.domain.entity.User;
 import be.technobel.domain.repository.interfaces.character.CharacterRepository;
 import be.technobel.domain.repository.interfaces.chips.ChipsRepository;
+import be.technobel.services.interfaces.ActionGameInterface;
 @EJB(name="actionGame")
-public class ActionGame {
+public class ActionGame implements ActionGameInterface{
 	@EJB
 	private CharacterRepository charRepository;
 	@EJB
@@ -137,4 +138,6 @@ public class ActionGame {
 		}
 		return null;
 	}
+
+
 }

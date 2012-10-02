@@ -3,6 +3,7 @@ package be.technobel.services.interfaces;
 import java.util.List;
 
 import javax.ejb.Local;
+import be.technobel.domain.entity.Character;
 
 import be.technobel.domain.entity.Chips;
 import be.technobel.domain.entity.User;
