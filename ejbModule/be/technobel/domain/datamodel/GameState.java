@@ -11,25 +11,19 @@ import be.technobel.domain.entity.User;
 
 
 public class GameState {
-	
-	//private int gameStep = 0;
-	//private int round = 0;
+	//ATTRIBUTS
 	private int currentPlayer = 0;
-	
-	
-
 	private List<User> user;
-		
 	private Character victim;
 	private Character suspect;
 	private List<Character> suspects = new ArrayList<Character>();
-	//private LinkedList<LinkedList<PlayerChips>> suspectTokens = new LinkedList<LinkedList<PlayerChips>>();
-	
-	//private int firstTokenSuspect;
 	private Character lastSelectedCharacter;
-
+	private boolean endGame=false;
+	//CONSTRUCTEUR
 	public GameState() {}
 
+	
+	//METHODES
 	public int getCurrentPlayer() {
 		return currentPlayer;
 	}
