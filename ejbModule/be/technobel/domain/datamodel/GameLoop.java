@@ -14,7 +14,9 @@ public class GameLoop {
 	private int nbrWaitToTurnClue; // Nombre de joueur en attente pour le TurnClue 
 	private List<String> userListIpWaitTurn; //Liste des User en attente du turnclue
 	private boolean isTurnClue; // Est-ce que le turnClue a été active
-	
+	private int currentPlayer;
+	private boolean isOnFirstPlayer;
+	private boolean isOnAccusation;
 
 	public GameLoop() {
 		this.nbrMaxPlayer = 4;
@@ -24,6 +26,7 @@ public class GameLoop {
 		this.setRoundCounter(0);
 		this.setInitialized(false);
 		this.setTurnClue(false);
+		this.setCurrentPlayer(0);
 	}
 
 	public List<String> getUserListIpWaitTurn() {
@@ -96,6 +99,10 @@ public class GameLoop {
 	public int getNbrMaxPlayer() {
 		return nbrMaxPlayer;
 	}
+	
+	public void setNbrMaxPlayer(int nbrMaxPlayer) {
+		this.nbrMaxPlayer = nbrMaxPlayer;
+	}
 
 	public boolean isInitialized() {
 		return isInitialized;
@@ -129,6 +136,30 @@ public class GameLoop {
 			}
 		}
 		return false;
+	}
+
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(int currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
+	public boolean isOnFirstPlayer() {
+		return isOnFirstPlayer;
+	}
+
+	public void setOnFirstPlayer(boolean isOnFirstPlayer) {
+		this.isOnFirstPlayer = isOnFirstPlayer;
+	}
+
+	public boolean isOnAccusation() {
+		return isOnAccusation;
+	}
+
+	public void setOnAccusation(boolean isOnAccusation) {
+		this.isOnAccusation = isOnAccusation;
 	}
 
 
