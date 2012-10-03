@@ -1,5 +1,6 @@
 package be.technobel.domain.datamodel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameLoop {
@@ -19,6 +20,8 @@ public class GameLoop {
 	private boolean isOnAccusation;
 
 	public GameLoop() {
+		connectedUsers = new ArrayList<ConnectedUser>();
+		userListIpWaitTurn = new ArrayList<String>();
 		this.nbrMaxPlayer = 4;
 		this.setNbrPlayer(0);
 		this.setLoopCounter(0);
