@@ -15,7 +15,6 @@ public class GameState {
 	private int currentPlayer = 0;
 	private List<User> user;
 	private Character victim;
-	private Character suspect;
 	private List<Character> suspects = new ArrayList<Character>();
 	private Character lastSelectedCharacter;
 	private boolean endGame=false;
@@ -58,7 +57,7 @@ public class GameState {
 	
 	public void addSuspect(Character suspect)
 	{
-		this.suspect= suspect;
+		this.suspects.add(suspect);
 	}
 
 	public Character getLastSelectedCharacter() {
