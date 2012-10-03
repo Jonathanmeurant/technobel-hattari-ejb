@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -21,6 +23,10 @@ import be.technobel.domain.datamodel.CharacterType;
 
 @Entity
 @Table(name="CHARACTER_HT")
+@NamedQueries({
+	@NamedQuery(name = "Character.findFor2Players", query = "select c from Character c where not c.number = 2 and not c.number = 8 or c.number is null"),
+	@NamedQuery(name = "Character.findFor3Players", query = "select c from Character c where not c.number = 2 or c.number is null")
+})
 public class Character {
 
 	@Id
@@ -29,7 +35,7 @@ public class Character {
 	private Integer id;
 	@Column(name ="CHARACTER_HT_IMAGE")
 	private String image;
-	@Column(name ="CHARACTER_HT_NUMBER", nullable =true)
+	@Column(name ="CHARACTER_HT_NUMBER", nullable =true) //nom de la colonne en base de données
 	private Integer number;
 	@Enumerated(value = EnumType.STRING) 
 	@Column(name ="CHARACTER_HT_TYPE")
