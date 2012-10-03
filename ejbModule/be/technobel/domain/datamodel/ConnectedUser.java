@@ -14,6 +14,19 @@ public class ConnectedUser extends User {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public ConnectedUser(User user) {
+		this.setAvatar(user.getAvatar());
+		this.setChips(user.getChips());
+		this.setClue(user.getClue());
+		this.setEmail(user.getEmail());
+		this.setFirstName(user.getFirstName());
+		this.setId(user.getId());
+		this.setLastName(user.getLastName());
+		this.setPassword(user.getPassword());
+		this.setUsername(user.getUsername());
+		this.setScore(user.getScore());
+	}
+
 	public String getUserIP() {
 		return userIP;
 	}
