@@ -21,7 +21,7 @@ import javax.persistence.Transient;
 	@NamedQuery(name = "Chips.findByName",
 				query = "SELECT c FROM Chips AS c where c.name  like :name")
 	} )
-public class Chips {
+public class Chips implements Cloneable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,13 +36,24 @@ public class Chips {
 	@Transient
 	private Boolean reversed;
 
-	public Chips() { }
+	public Chips() {
+		this.reversed=false;
+	}
+	
+	public Chips(Chips chip) {
+		this.id=chip.id;
+		this.imageBack=chip.imageBack;
+		this.imageRecto=chip.imageRecto;
+		this.name=chip.name;
+		this.reversed=chip.reversed;
+	}
 
 	public Chips(String name, String imageRecto, String imageBack) {
 		super();
 		this.name = name;
 		this.imageRecto = imageRecto;
 		this.imageBack = imageBack;
+		this.reversed=false;
 	}
 
 	public Integer getId() {
@@ -84,5 +95,12 @@ public class Chips {
 	public void setReversed(Boolean reversed) {
 		this.reversed = reversed;
 	}
+
+	@Override
+	public Chips clone() throws CloneNotSupportedException {
+		return new Chips(this);
+	}
+	
+	
 	
 }

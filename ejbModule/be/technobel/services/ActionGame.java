@@ -34,9 +34,10 @@ public class ActionGame implements ActionGameInterface {
 	// --------------------------------------BEGIN
 	// GAME----------------------------------------//
 	public void intializeGame(List<User> users) {
-
+		gamestate = new GameState();
 		gamestate.setUser(users);
 		gamestate.setCurrentPlayer(0);
+		System.out.println("action game gamestate :"+gamestate);
 		List<Character> listNbre = charRepository.findAll();
 		gamestate.setLastSelectedCharacter(null);
 
@@ -67,30 +68,35 @@ public class ActionGame implements ActionGameInterface {
 		// -------InitializeChipsPlayer--------//
 		pos = 1;
 		int mult = 5;
+		Chips chip=null ;
 		for (User user : users) {
 			List<Chips> userChips = new ArrayList<>();
 			switch (pos) {
 			case 1:
+				chip =chipsRepository.findByName("yellow");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(chipsRepository.findByName("yellow"));
+					userChips.add(new Chips(chip));
 					user.setChips(userChips);
 				}
 				break;
 			case 2:
+				chip =chipsRepository.findByName("blue");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(chipsRepository.findByName("blue"));
+					userChips.add(new Chips(chip));
 					user.setChips(userChips);
 				}
 				break;
 			case 3:
+				chip =chipsRepository.findByName("red");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(chipsRepository.findByName("red"));
+					userChips.add(new Chips(chip));
 					user.setChips(userChips);
 				}
 				break;
 			case 4:
+				chip =chipsRepository.findByName("green");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(chipsRepository.findByName("green"));
+					userChips.add(new Chips(chip));
 					user.setChips(userChips);
 				}
 				break;
@@ -118,8 +124,7 @@ public class ActionGame implements ActionGameInterface {
 
 	public void firstPlayer(Character character) {
 		gamestate.setLastSelectedCharacter(character);
-		character.getlChips().add(chipsRepository.findByName("firstplayer"));
-
+		character.addChips(chipsRepository.findByName("firstplayer"));
 	}
 
 	public void accusation(Character suspect) {

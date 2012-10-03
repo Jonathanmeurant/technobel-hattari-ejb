@@ -1,5 +1,6 @@
 package be.technobel.domain.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -43,7 +44,7 @@ public class Character {
 	@Transient
 	private  Boolean visible;
 	@Transient
-	private List<Chips> lChips;
+	private List<Chips> lChips =new ArrayList<Chips>();
 	
 
 	public Character() { }
@@ -104,6 +105,11 @@ public class Character {
 	public void setlChips(List<Chips> lChips) {
 		this.lChips = lChips;
 	}
+	
+	public void addChips(Chips chips){
+		lChips.add(chips);
+	}
+	
 	
 	
 }
