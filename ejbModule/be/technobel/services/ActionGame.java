@@ -14,7 +14,6 @@ import be.technobel.domain.entity.Chips;
 import be.technobel.domain.entity.User;
 import be.technobel.domain.repository.interfaces.character.CharacterRepository;
 import be.technobel.domain.repository.interfaces.chips.ChipsRepository;
-import be.technobel.domain.repository.interfaces.user.UserRepository;
 import be.technobel.services.interfaces.ActionGameInterface;
 
 @Stateless(name = "actionGame")
@@ -23,8 +22,6 @@ public class ActionGame implements ActionGameInterface {
 	private CharacterRepository charRepository;
 	@EJB
 	private ChipsRepository chipsRepository;
-	@EJB
-	private UserRepository userRepository;
 	private GameState gamestate = new GameState();
 
 	public GameState getGamestate() {
@@ -37,8 +34,20 @@ public class ActionGame implements ActionGameInterface {
 		gamestate = new GameState();
 		gamestate.setUser(users);
 		gamestate.setCurrentPlayer(0);
-		System.out.println("action game gamestate :"+gamestate);
-		List<Character> listNbre = charRepository.findAll();
+		int nbPlayers = users.size();
+		List<Character> listNbre;
+		switch (nbPlayers) {
+		case 2:
+			listNbre = charRepository.findFor2players();
+			break;
+		case 3:
+			listNbre = charRepository.findFor3players();
+			break;
+		default:
+			listNbre = charRepository.findAll();
+			break;
+		}
+			
 		gamestate.setLastSelectedCharacter(null);
 
 		Random random = new Random();
@@ -62,6 +71,12 @@ public class ActionGame implements ActionGameInterface {
 				break;
 			}
 			pos++;
+			if(nbPlayers==2 && pos == 2){
+				pos = 4;
+			}
+			if(nbPlayers==3 && pos == 3){
+				pos = 4;
+			}
 			listNbre.remove(nbreRandom);
 		}
 

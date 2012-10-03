@@ -21,14 +21,14 @@ public class CharacterRepositoryJpa extends GenericRepositoryJpa<Character> impl
 
 	@Override
 	public List<Character> findFor2players() {
-		TypedQuery<Character> query = em.createNamedQuery("Character.findFor2players",Character.class);
+		TypedQuery<Character> query = em.createNamedQuery("Character.findFor2Players",Character.class);
 		return query.getResultList();
 		
 	}
 
 	@Override
 	public List<Character> findFor3players() {
-		TypedQuery<Character> query = em.createNamedQuery("Character.findFor3players",Character.class);
+		TypedQuery<Character> query = em.createNamedQuery("Character.findFor3Players",Character.class);
 		return query.getResultList();
 	}
 
