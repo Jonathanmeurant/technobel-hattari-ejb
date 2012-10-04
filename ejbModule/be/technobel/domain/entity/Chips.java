@@ -50,6 +50,7 @@ public class Chips implements Cloneable {
 		this.imageRecto=chip.imageRecto;
 		this.name=chip.name;
 		this.reversed=chip.reversed;
+		this.user=chip.user;
 	}
 
 	public Chips(String name, String imageRecto, String imageBack) {

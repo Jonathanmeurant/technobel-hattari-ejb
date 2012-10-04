@@ -87,36 +87,35 @@ public class ActionGame implements ActionGameInterface {
 			switch (pos) {
 			case 1:
 				chip =chipsRepository.findByName("yellow");
+				chip.setUser(user);
 				for (int i = 0; i < mult; i++) {
-					user.addChip(new Chips(chip));
-					chip.setUser(user);
+					user.addChip(new Chips(chip));					
 				}
 				break;
 			case 2:
 				chip =chipsRepository.findByName("blue");
-				for (int i = 0; i < mult; i++) {
+				chip.setUser(user);
+				for (int i = 0; i < mult; i++) {					
 					user.addChip(new Chips(chip));
-					chip.setUser(user);
 				}
 				break;
 			case 3:
 				chip =chipsRepository.findByName("red");
-				for (int i = 0; i < mult; i++) {
+				chip.setUser(user);
+				for (int i = 0; i < mult; i++) {					
 					user.addChip(new Chips(chip));
-					chip.setUser(user);
 				}
 				break;
 			case 4:
 				chip =chipsRepository.findByName("green");
-				for (int i = 0; i < mult; i++) {
+				chip.setUser(user);
+				for (int i = 0; i < mult; i++) {					
 					user.addChip(new Chips(chip));
-					chip.setUser(user);
 				}
 				break;
 			}
 			pos++;
 		}
-
 	}
 
 	public void turnClue() {
@@ -205,6 +204,9 @@ public class ActionGame implements ActionGameInterface {
 			{
 				for(Chips token : tokens)
 				{
+					if(token.getName().equalsIgnoreCase("firstplayer")){
+						continue;
+					}
 					User user=token.getUser();
 					user.addChip(token);
 				}
@@ -214,11 +216,67 @@ public class ActionGame implements ActionGameInterface {
 				User user=tokens.get(tokens.size()-1).getUser();
 				for(Chips token : tokens)
 				{
+					if(token.getName().equalsIgnoreCase("firstplayer")){
+						continue;
+					}
 					user.addChip(token);
 					token.setUser(user);
 					token.setReversed(true);
 				}
 			}
+			
+			suspect.removeChips(tokens);
+		}
+	}
+	
+	public void intializeGameRound() {
+		gamestate.setCurrentPlayer(0);
+		List<User> users = gamestate.getUser();
+		int nbPlayers = users.size();
+		List<Character> listNbre;
+		switch (nbPlayers) {
+		case 2:
+			listNbre = charRepository.findFor2players();
+			break;
+		case 3:
+			listNbre = charRepository.findFor3players();
+			break;
+		default:
+			listNbre = charRepository.findAll();
+			break;
+		}
+			
+		gamestate.setLastSelectedCharacter(null);
+		gamestate.getSuspects().clear();
+
+		Random random = new Random();
+		int nbreRandom = 0;
+		int pos = 0;
+		while (listNbre.size() > 0) {
+			nbreRandom = random.nextInt(listNbre.size());
+
+			switch (pos) {
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+				users.get(pos).setClue(listNbre.get(nbreRandom));
+				break;
+			case 4:
+				gamestate.setVictim(listNbre.get(nbreRandom)); // victime
+				break;
+			default:
+				gamestate.addSuspect(listNbre.get(nbreRandom)); // suspects
+				break;
+			}
+			pos++;
+			if(nbPlayers==2 && pos == 2){
+				pos = 4;
+			}
+			if(nbPlayers==3 && pos == 3){
+				pos = 4;
+			}
+			listNbre.remove(nbreRandom);
 		}
 	}
 

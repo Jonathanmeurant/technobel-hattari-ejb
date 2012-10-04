@@ -21,5 +21,9 @@ public interface ActionGameInterface {
 	public Chips searchChipsUser(User user);
 	public GameState getGamestate();
 	public void setGamestate(GameState gamestate);
+	public void sharingChips();
+	public void intializeGameRound();
+	public User userWin();
+	public boolean endGame();
 
 }
