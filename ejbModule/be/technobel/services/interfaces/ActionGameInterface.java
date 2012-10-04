@@ -20,4 +20,6 @@ public interface ActionGameInterface {
 	public void accusation(Character suspect);
 	public Chips searchChipsUser(User user);
 	public GameState getGamestate();
+	public void setGamestate(GameState gamestate);
+
 }
