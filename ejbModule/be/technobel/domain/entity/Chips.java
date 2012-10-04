@@ -1,5 +1,7 @@
 package be.technobel.domain.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +37,8 @@ public class Chips implements Cloneable {
 	private String imageBack;
 	@Transient
 	private Boolean reversed;
+	@Transient
+	private User user;
 
 	public Chips() {
 		this.reversed=false;
@@ -99,6 +103,14 @@ public class Chips implements Cloneable {
 	@Override
 	public Chips clone() throws CloneNotSupportedException {
 		return new Chips(this);
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

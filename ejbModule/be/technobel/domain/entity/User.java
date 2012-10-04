@@ -1,6 +1,7 @@
 package be.technobel.domain.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -48,7 +49,7 @@ public class User {
 	private Score score;
 	
 	@Transient
-	private List<Chips> chips;
+	private List<Chips> chips= new ArrayList<Chips>();
 	@Transient
 	private Character clue; 
 	
@@ -149,6 +150,13 @@ public class User {
 		this.clue = clue;
 	}
 	
+	public void addChip(Chips chip)
+	{
+		this.chips.add(chip);
+	}
 	
-	
+	public void removeChip(Chips chip)
+	{
+		this.chips.remove(chip);
+	}
 }

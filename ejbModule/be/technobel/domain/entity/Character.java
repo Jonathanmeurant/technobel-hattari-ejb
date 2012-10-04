@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import be.technobel.domain.datamodel.CharacterType;
+import be.technobel.domain.repository.interfaces.character.CharacterRepository;
 
 /**
  * @author jonmeu
@@ -110,6 +111,17 @@ public class Character {
 		lChips.add(chips);
 	}
 	
-	
+	@Override
+	public boolean equals(Object character) {
+		if(character instanceof Character)
+		{
+			Character charac =(Character) character;
+			if(charac.getNumber()== this.number)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

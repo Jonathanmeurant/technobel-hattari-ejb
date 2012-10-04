@@ -16,8 +16,10 @@ public class GameState {
 	private List<User> user;
 	private Character victim;
 	private List<Character> suspects = new ArrayList<Character>();
+	private Character killer;
 	private Character lastSelectedCharacter;
 	private boolean endGame=false;
+	private int version =1;
 	//CONSTRUCTEUR
 	public GameState() {}
 
@@ -67,6 +69,29 @@ public class GameState {
 	public void setLastSelectedCharacter(Character lastSelectedCharacter) {
 		this.lastSelectedCharacter = lastSelectedCharacter;
 	}
+
+
+	public Character getKiller() {
+		return killer;
+	}
+
+
+	public void setKiller(Character killer) {
+		this.killer = killer;
+	}
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	
+	
+	
 	
 	
 }

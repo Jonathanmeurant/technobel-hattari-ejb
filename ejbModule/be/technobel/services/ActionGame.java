@@ -28,8 +28,7 @@ public class ActionGame implements ActionGameInterface {
 		return gamestate;
 	}
 
-	// --------------------------------------BEGIN
-	// GAME----------------------------------------//
+	// --------------------------------------BEGIN GAME----------------------------------------//
 	public void intializeGame(List<User> users) {
 		gamestate = new GameState();
 		gamestate.setUser(users);
@@ -85,34 +84,33 @@ public class ActionGame implements ActionGameInterface {
 		int mult = 5;
 		Chips chip=null ;
 		for (User user : users) {
-			List<Chips> userChips = new ArrayList<>();
 			switch (pos) {
 			case 1:
 				chip =chipsRepository.findByName("yellow");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(new Chips(chip));
-					user.setChips(userChips);
+					user.addChip(new Chips(chip));
+					chip.setUser(user);
 				}
 				break;
 			case 2:
 				chip =chipsRepository.findByName("blue");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(new Chips(chip));
-					user.setChips(userChips);
+					user.addChip(new Chips(chip));
+					chip.setUser(user);
 				}
 				break;
 			case 3:
 				chip =chipsRepository.findByName("red");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(new Chips(chip));
-					user.setChips(userChips);
+					user.addChip(new Chips(chip));
+					chip.setUser(user);
 				}
 				break;
 			case 4:
 				chip =chipsRepository.findByName("green");
 				for (int i = 0; i < mult; i++) {
-					userChips.add(new Chips(chip));
-					user.setChips(userChips);
+					user.addChip(new Chips(chip));
+					chip.setUser(user);
 				}
 				break;
 			}
@@ -146,7 +144,7 @@ public class ActionGame implements ActionGameInterface {
 		User user = gamestate.getUser().get(gamestate.getCurrentPlayer());
 		Chips chips = searchChipsUser(user);
 		suspect.getlChips().add(chips);
-		user.getChips().remove(chips);
+		user.removeChip(chips);
 		gamestate.setLastSelectedCharacter(suspect);
 	}
 
@@ -188,9 +186,43 @@ public class ActionGame implements ActionGameInterface {
 			return killerMax;
 		}
 	}
+	
+	public void sharingChips()
+	{
+		gamestate.setKiller(searchKiller());
+		Character killer = gamestate.getKiller();
+		List<Character> suspects=gamestate.getSuspects();
+		
+		for(Character suspect : suspects){
+			List<Chips> tokens = suspect.getlChips();
+			
+			if(suspect.getlChips().isEmpty())
+			{
+				continue;
+			}
+			
+			if(suspect.equals(killer))
+			{
+				for(Chips token : tokens)
+				{
+					User user=token.getUser();
+					user.addChip(token);
+				}
+			}
+			else
+			{
+				User user=tokens.get(tokens.size()-1).getUser();
+				for(Chips token : tokens)
+				{
+					user.addChip(token);
+					token.setUser(user);
+					token.setReversed(true);
+				}
+			}
+		}
+	}
 
-	// --------------------------------------END
-	// GAME----------------------------------------//
+	// --------------------------------------END GAME----------------------------------------//
 	public User userWin() {
 		User winner = null;
 		List<User> winUsers = new ArrayList<User>();
@@ -252,5 +284,9 @@ public class ActionGame implements ActionGameInterface {
 		}
 		return endGame;
 
+	}
+	
+	public void setGamestate(GameState gamestate) {
+		this.gamestate = gamestate;
 	}
 }
